@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Template1 from './template1/Template1'
 
 function App() {
 
-  const wildcardID = "valliyappa"
+  // const wildcardID = "valliyappa"
   const templateID = 1
 
 

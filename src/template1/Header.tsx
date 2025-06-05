@@ -17,7 +17,7 @@ const Header = ({children}:HeaderProps) => {
     //IF THE URL IS / => select index 0
 
    const tabs = ["Projects","Experience","Publishing"]
-   const imgUrl = new URL('./assets/profile_pic.JPG',import.meta.url).href
+//    const imgUrl = new URL('./assets/profile_pic.JPG',import.meta.url).href
    const skills:String[] = ["UIKit","ReactJS","NodeJS","TailwindCSS","NextJS","MongoDB","Firebase","Supabase"]
 
    
@@ -33,7 +33,7 @@ const Header = ({children}:HeaderProps) => {
     return tabRefs[0].current?.getBoundingClientRect().bottom
    }
 
-   
+
    useEffect(()=>{
     const ref = tabRefs[selectedPage]
     const rect = ref.current?.getBoundingClientRect()

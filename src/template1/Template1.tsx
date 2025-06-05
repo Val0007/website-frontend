@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home'
 import Header from './Header';
-import Posts from './pages/posts';
+// import Posts from './pages/posts';
  
 const Template1 = () => {
 
