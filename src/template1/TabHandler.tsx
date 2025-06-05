@@ -9,6 +9,11 @@ interface TabHandlerProps {
    
    function TabHandler({ tabs, content }: TabHandlerProps) {
     const { tabName } = useParams<{ tabName: string }>();
+
+    console.log('Current tabName:', tabName);
+    console.log('Available tabs:', tabs);
+    console.log('Available content keys:', content ? Object.keys(content) : 'No content');
+    
    
     // Check if user has access to this tab
     if (!tabs.includes(tabName || '')) {
