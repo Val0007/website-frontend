@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import TabHandler from './TabHandler';
 import type { Content } from './pages/SectionRenderer';
-// import Posts from './pages/posts';
+
  
 const Template1 = () => {
 
@@ -11,28 +11,26 @@ const Template1 = () => {
       "Experience": {
         structureId: 1,
         data: [
-          { title: "INTERN", description: "Worked as a fullstack dev" },
+          { title: "INTERN", description: "Worked as a fullstack dev" , link: "ssss.com"},
           { title: "AI DEV", description: "Worked " }
         ]
       },
       "Projects": {
         structureId: 2,
         data: [
-          { title: "To-Do App", link: "ssss.com" }
+          { title: "To-Do App", link: "ssss.com" , description: "Can add multiple todos over the course of the app, you have two options"}
         ]
       }
      };
 
+
    return (
       <div className=' h-full w-full'>
 
-      <Header>
+      <Header tabs={tabs}>
          
       <Routes>
       <Route path="/:tabName" element={<TabHandler tabs={tabs} content={contentData} />} />
-      {/* {tabs.map(tab => (
-  <Route key={tab} path={`/${tab}`} element={<Home />} />
-))} */}
          </Routes>
          </Header>
 

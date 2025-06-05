@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation} from "react-router-dom";
 
 interface HeaderProps{
     children:React.ReactNode
+    tabs:string[]
 }
 
 interface Page{
@@ -10,36 +11,54 @@ interface Page{
    link:String
 }
 
-const Header = ({children}:HeaderProps) => {
+const Header = ({children,tabs}:HeaderProps) => {
 
+
+    const location = useLocation();
+    
+    const currentTab = location.pathname.slice(1);
 
 
     //IF THE URL IS / => select index 0
 
-   const tabs = ["Projects","Experience","Publishing"]
-//    const imgUrl = new URL('./assets/profile_pic.JPG',import.meta.url).href
    const skills:String[] = ["UIKit","ReactJS","NodeJS","TailwindCSS","NextJS","MongoDB","Firebase","Supabase"]
 
    
    const pages = useMemo(() => makePages(tabs), [tabs]);  
+   
    const tabRefs = [useRef<HTMLDivElement|null>(null),useRef<HTMLDivElement|null>(null),useRef<HTMLDivElement|null>(null)] 
    
-//    const selectedIndex = tabs.findIndex(tab => tab === selectedPage.current);
 
-   const [tabOffset,setTabOffset] = useState<number>(0)
-   const [selectedPage,setSelectedPage] = useState<number>(0)
+   const [tabOffset,setTabOffset] = useState<number>()
+
+   const [selectedPage,setSelectedPage] = useState<number>()
+
+
+   //To find tab line bottom px
    const tabBottom = ()=>{
     console.log(tabRefs[0].current?.getBoundingClientRect().bottom)
     return tabRefs[0].current?.getBoundingClientRect().bottom
    }
 
 
+   //During Click to different tab
    useEffect(()=>{
+    if(selectedPage != undefined){
     const ref = tabRefs[selectedPage]
     const rect = ref.current?.getBoundingClientRect()
     console.log(rect?.left)
     setTabOffset(rect?.left || 0)
+    }
    },[selectedPage])
+
+
+   //During First Render using /Tab
+   useEffect(()=>{
+   setSelectedPage(()=>{
+    return tabs.findIndex(tab => tab == currentTab)
+   })
+   },[])
+
    
    function makePages(tabs: string[]): Page[] {
     return tabs.map(tab => ({ name: tab, link: `/${tab}` }));

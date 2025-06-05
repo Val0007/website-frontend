@@ -10,6 +10,7 @@ interface TabHandlerProps {
    function TabHandler({ tabs, content }: TabHandlerProps) {
     const { tabName } = useParams<{ tabName: string }>();
 
+
     console.log('Current tabName:', tabName);
     console.log('Available tabs:', tabs);
     console.log('Available content keys:', content ? Object.keys(content) : 'No content');
