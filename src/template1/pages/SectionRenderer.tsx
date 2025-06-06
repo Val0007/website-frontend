@@ -92,9 +92,8 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
     return (
       <div
         key={index}
-        className="mb-6 flex flex-col md:flex-row items-start gap-3 border-2 border-b-cyan-950 rounded p-2"
-      >
-        <h3 className="text-xl font-serif text-gray-800 tracking-tight rotate-0 md:-rotate-90 md:whitespace-nowrap">
+        className="mb-6 flex flex-col items-start gap-3 border-2 border-b-cyan-950 rounded p-2">
+        <h3 className="text-xl font-serif text-gray-800 tracking-tight rotate-0">
           {tabData.title}
         </h3>
         {tabData.description && (
