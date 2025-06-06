@@ -75,26 +75,29 @@ const Header = ({children,tabs}:HeaderProps) => {
          <div className="mt-2  font-bold tracking-wider">
             V SingValliyappa
          </div>
-         <div className="mt-1  font-light tracking-wider italic">
-            FullStack-IOS Enthusiast
+         <div className="mt-2 mb-2 text-sm font-extralight tracking-wider italic text-center">
+            Full description of the person , likes , quotes etc
          </div>
-         <div className="mt-2 w-full flex flex-row justify-around items-center">
-            <div className=" text-sm underline cursor-pointer" onClick={()=>{
+         <div className="mt-2 mb-2 w-full flex flex-row justify-center items-center">
+            <div className=" text-sm underline cursor-pointer mr-2" onClick={()=>{
                window.open('')
-            }}>mail</div>
-            <div className="text-sm underline cursor-pointer" onClick={()=>{
+            }}> <img src="/mail_icon.svg" alt="Email" width="30" height="30" /></div>
+            <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
                window.open('https://github.com/Val0007')
-            }}>github</div>
-            <div className="text-sm underline cursor-pointer" onClick={()=>{
+            }}><img src="/github_icon.svg" alt="Email" width="30" height="30" /></div>
+            <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
                window.open('https://www.linkedin.com/in/singvalliyappav/')
-            }}>linkedin</div>
+            }}><img src="/linkedin_icon.svg" alt="Email" width="30" height="30" /></div>
          </div>
-         <div className="mt-3 w-full px-4 flex flex-row overflow-x-auto flex-wrap  justify-center items-center">
+         <div className="mt-2 mb-2 w-full px-4 flex items-center justify-center">
+         <div className=" overflow-x-auto m-auto flex no-scrollbar">
             {skills.map((skill,i) => {
                return <div className="mr-2 mt-1 text-xs border-2 border-stone-400 rounded-full p-1" key={i}>{skill}</div>
             })}
          </div>
-         <div className="mt-3 w-full flex flex-row justify-around items-center relative">
+         </div>
+
+         <div className="mt-2 w-full flex flex-row justify-around items-center relative">
             {pages.map((page,i) => {
                return <div key={i}>
                   <div className={"text-sm  flex w-24  flex-col justify-between items-center tracking-wider " + ( i == selectedPage ? " text-blue-950 font-bold" : "text-black")} 
@@ -107,7 +110,7 @@ const Header = ({children,tabs}:HeaderProps) => {
                </div>
             })}
          </div>
-         <div className={" mt-2 h-1 bg-green-200 w-24 transition-all duration-300 absolute " } style={{left:`${tabOffset}px` , top:`${tabBottom()}px`  }}></div>
+         <div className={" mt-1 h-1 bg-green-200 w-24 transition-all duration-300 absolute " } style={{left:`${tabOffset}px` , top:`${tabBottom()}px`  }}></div>
        </div>
        <div className="w-full">
        {children}

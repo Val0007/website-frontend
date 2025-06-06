@@ -53,7 +53,7 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
       <div key={index} className="mb-4 border border-gray-400 rounded overflow-hidden shadow-sm">
         <button
           onClick={() => setOpen(!open)}
-          className="w-full text-left px-4 py-2 hover:bg-gray-200 font-bold text-lg flex justify-between items-center  "
+          className="w-full text-left px-4 py-2 hover:bg-gray-200 font-light text-xl font-stretch-110% flex justify-between items-center  "
         >
           <span>{tabData.title}</span>
           <span>{open ? '−' : '>'}</span>

@@ -20,6 +20,12 @@ const Template1 = () => {
         data: [
           { title: "To-Do App", link: "ssss.com" , description: "Can add multiple todos over the course of the app, you have two options"}
         ]
+      },
+      "Publishing": {
+        structureId: 3,
+        data: [
+          { title: "Journal Paper", link: "ssss.com" , description: "Can add multiple todos over the course of the app, you have two options"}
+        ]
       }
      };
 
