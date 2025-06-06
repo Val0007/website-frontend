@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate , useLocation} from "react-router-dom";
+import type { HeaderData } from "../utils/templateType1";
 
 interface HeaderProps{
     children:React.ReactNode
     tabs:string[]
+    data:HeaderData
 }
 
 interface Page{
@@ -11,7 +13,7 @@ interface Page{
    link:String
 }
 
-const Header = ({children,tabs}:HeaderProps) => {
+const Header = ({children,tabs,data}:HeaderProps) => {
 
 
     const location = useLocation();
@@ -73,22 +75,31 @@ const Header = ({children,tabs}:HeaderProps) => {
             <img src={imgUrl} className="h-full w-full object-cover rounded-full" alt="" />
          </div> */}
          <div className="mt-2  font-bold tracking-wider">
-            V SingValliyappa
+            {data.name}
          </div>
          <div className="mt-2 mb-2 text-sm font-extralight tracking-wider italic text-center">
-            Full description of the person , likes , quotes etc
+            {data.description}
          </div>
+
+         {/* MAIL */}
          <div className="mt-2 mb-2 w-full flex flex-row justify-center items-center">
-            <div className=" text-sm underline cursor-pointer mr-2" onClick={()=>{
-               window.open('')
-            }}> <img src="/mail_icon.svg" alt="Email" width="30" height="30" /></div>
-            <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
-               window.open('https://github.com/Val0007')
-            }}><img src="/github_icon.svg" alt="Email" width="30" height="30" /></div>
-            <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
-               window.open('https://www.linkedin.com/in/singvalliyappav/')
-            }}><img src="/linkedin_icon.svg" alt="Email" width="30" height="30" /></div>
+
+            { data.links?.mail ? <div className=" text-sm underline cursor-pointer mr-2" onClick={()=>{
+               window.open('') //
+            }}> <img src="/mail_icon.svg" alt="Email" width="30" height="30" /></div> : null}
+            
+            {/* GITHUB */}
+            {data.links?.github ?  <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
+               window.open(`${data.links?.github}`)
+            }}><img src="/github_icon.svg" alt="Email" width="30" height="30" /></div> : null}
+            
+            {/* LInkedin */}
+            {data.links?.linkedin ? <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
+               window.open(`${data.links?.linkedin}`)
+            }}><img src="/linkedin_icon.svg" alt="Email" width="30" height="30" /></div> : null}
+            
          </div>
+         
          <div className="mt-2 mb-2 w-full px-4 flex items-center justify-center">
          <div className=" overflow-x-auto m-auto flex no-scrollbar">
             {skills.map((skill,i) => {

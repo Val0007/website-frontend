@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import type { Content } from "./pages/SectionRenderer";
+import type { Content } from "../utils/templateType1";
 import SectionRenderer from "./pages/SectionRenderer";
 
 interface TabHandlerProps {

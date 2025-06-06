@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
+import type { Content, TabData } from '../../utils/templateType1';
 
 // TypeScript interfaces based on your schema
-interface TabData {
- title: string;
- description?: string;
- link?: string;
-}
 
-export interface Content {
- structureId: number;
- data: TabData[];
-}
 
 interface SectionRendererProps {
  userData: Content;
