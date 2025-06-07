@@ -14,7 +14,7 @@ const Template1 = () => {
    return (
       <div className=' h-full w-full'>
 
-      <Header tabs={tabs} data={{name:data?.name || "",email:data?.email || "",links:data?.links,description:"ggg"}}>
+      <Header tabs={tabs} data={{name:data?.name || "",email:data?.email || "",links:data?.links,description:data?.description || "",skills:data?.skills || []}}>
          
       <Routes>
       <Route path="/:tabName" element={<TabHandler tabs={tabs} content={contentData} />} />

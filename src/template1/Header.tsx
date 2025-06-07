@@ -23,8 +23,6 @@ const Header = ({children,tabs,data}:HeaderProps) => {
 
     //IF THE URL IS / => select index 0
 
-   const skills:String[] = ["UIKit","ReactJS","NodeJS","TailwindCSS","NextJS","MongoDB","Firebase","Supabase"]
-
    
    const pages = useMemo(() => makePages(tabs), [tabs]);  
    
@@ -74,10 +72,10 @@ const Header = ({children,tabs,data}:HeaderProps) => {
          {/* <div className=" h-20 w-20 bg-gray-200 rounded-full">
             <img src={imgUrl} className="h-full w-full object-cover rounded-full" alt="" />
          </div> */}
-         <div className="mt-2  font-bold tracking-wider">
+         <div className="mt-2  font-bold tracking-wider font-Quicksand">
             {data.name}
          </div>
-         <div className="mt-2 mb-2 text-sm font-extralight tracking-wider italic text-center">
+         <div className="mt-2 mb-2 text-sm font-extralight tracking-wider italic lg:text-center text-start">
             {data.description}
          </div>
 
@@ -85,7 +83,7 @@ const Header = ({children,tabs,data}:HeaderProps) => {
          <div className="mt-2 mb-2 w-full flex flex-row justify-center items-center">
 
             { data.links?.mail ? <div className=" text-sm underline cursor-pointer mr-2" onClick={()=>{
-               window.open('') //
+               window.open('mailto:someone@example.com') //
             }}> <img src="/mail_icon.svg" alt="Email" width="30" height="30" /></div> : null}
             
             {/* GITHUB */}
@@ -99,11 +97,11 @@ const Header = ({children,tabs,data}:HeaderProps) => {
             }}><img src="/linkedin_icon.svg" alt="Email" width="30" height="30" /></div> : null}
             
          </div>
-         
+
          <div className="mt-2 mb-2 w-full px-4 flex items-center justify-center">
          <div className=" overflow-x-auto m-auto flex no-scrollbar">
-            {skills.map((skill,i) => {
-               return <div className="mr-2 mt-1 text-xs border-2 border-stone-400 rounded-full p-1" key={i}>{skill}</div>
+            {data.skills!.map((skill,i) => {
+               return <div className="mr-2 mt-1 px-2 text-xs border-2 border-stone-400 rounded-full p-1 font-Raleway" key={i}>{skill}</div>
             })}
          </div>
          </div>
@@ -123,7 +121,7 @@ const Header = ({children,tabs,data}:HeaderProps) => {
          </div>
          <div className={" mt-1 h-1 bg-green-200 w-24 transition-all duration-300 absolute " } style={{left:`${tabOffset}px` , top:`${tabBottom()}px`  }}></div>
        </div>
-       <div className="w-full">
+       <div className="w-full overflow-y-auto mt-2">
        {children}
        </div>
       </div>

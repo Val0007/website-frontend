@@ -17,16 +17,16 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
     return (
       <div
         key={index}
-        className="backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl p-5 mb-6"
+        className="backdrop-blur-md bg-white/40 border border-white/60 rounded-xl shadow-xl py-2 px-4 mb-6"
       >
-        <h3 className="text-xl font-bold text-gray-900">{tabData.title}</h3>
+        <h3 className="text-md md:text-lg font-semibold text-gray-900 font-Playfair">{tabData.title}</h3>
         {tabData.description && (
-          <p className=" font-extralight text-lg  text-gray-800 mt-2">{tabData.description}</p>
+          <p className=" font-extralight text-md md:text-base  text-gray-800 mt-2 font-Quicksand">{tabData.description}</p>
         )}
         {tabData.link && (
           <a
             href={tabData.link}
-            className="inline-block mt-3 text-base text-blue-800 font-medium hover:underline italic "
+            className="inline-block mt-3 text-sm md:text-base text-blue-800 font-medium hover:underline italic font-Nunito "
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -45,7 +45,7 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
       <div key={index} className="mb-4 border border-gray-400 rounded overflow-hidden shadow-sm">
         <button
           onClick={() => setOpen(!open)}
-          className="w-full text-left px-4 py-2 hover:bg-gray-200 font-light text-xl font-stretch-110% flex justify-between items-center  "
+          className="w-full text-left px-4 py-2 hover:bg-gray-200 font-light text-md md:text-lg font-stretch-110% flex justify-between items-center  "
         >
           <span>{tabData.title}</span>
           <span>{open ? '−' : '>'}</span>
@@ -58,7 +58,7 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
               }`}>
             {
             tabData.description && (
-              <p className="text-base mt-1 mb-3 text-gray-600 transition-all duration-300">{tabData.description}</p>
+              <p className="text-sm md:text-base mt-1 mb-3 text-gray-600 transition-all duration-300 font-Raleway">{tabData.description}</p>
             )
             }
             </div>
@@ -67,7 +67,7 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
           {tabData.link && (
               <a
                 href={tabData.link}
-                className="block mt-0 text-sm text-blue-600 hover:underline"
+                className="block mt-0 text-sm md:text-md text-blue-600 hover:underline font-Raleway "
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -84,19 +84,19 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
     return (
       <div
         key={index}
-        className="mb-6 flex flex-col items-start gap-3 border-2 border-b-cyan-950 rounded p-2">
-        <h3 className="text-xl font-serif text-gray-800 tracking-tight rotate-0">
+        className="mb-6 flex flex-col items-start gap-3 border-2 border-b-cyan-950 rounded-lg px-2 py-4 shadow-md">
+        <h3 className="text-lg md:text-lg  text-gray-800 tracking-tight rotate-0 font-Nunito">
           {tabData.title}
         </h3>
         {tabData.description && (
-          <p className="text-md md:text-lg text-gray-600 max-w-xl ">
+          <p className="text-base md:text-base text-gray-600 max-w-xl font-Raleway">
             {tabData.description}
           </p>
         )}
         {tabData.link && (
           <a
           href={tabData.link}
-          className="inline-block mt-1 text-sm text-blue-800 font-mono italic hover:underline"
+          className="inline-block mt-1 text-sm md:text-md text-blue-800 italic hover:underline font-Nunito"
           target="_blank"
           rel="noopener noreferrer"
         >Visit Link → {tabData.link}</a>
@@ -124,8 +124,8 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
   
 
  return (
-   <div className="container mx-auto p-6">
-     <div className="space-y-4">
+   <div className="container mx-auto p-6 ">
+     <div className="space-y-4 w-full flex flex-col md:grid md:grid-cols-3 md:gap-x-10 md:w-4/5 md:m-auto">
 
        {data && data.length > 0 ? (
          returnStructure(structureId,data)

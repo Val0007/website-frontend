@@ -17,9 +17,10 @@ interface Links{
 
 export interface HeaderData{
     name:string
-    description:string
     email:string
     links?:Links
+    skills?:string[]
+    description?:string
 }
 
 export interface SiteData{
@@ -29,6 +30,8 @@ export interface SiteData{
     templateId:number
     links?:Links
     tabs:string[]
+    skills?:string[]
+    description?:string
     content?: {
         [key: string]: Content;
       };
