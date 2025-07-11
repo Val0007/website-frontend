@@ -5,11 +5,9 @@ import { useContext } from 'react';
 import Layout from './Layout';
 
 
-enum Colormode{
-   light = "light"
-   ,dark = "dark"
-   
-}
+export type ColorMode = "light" | "dark";
+export const COLOR_MODES: ColorMode[] = ["light", "dark"];
+
  
 const Template1 = () => {
    const data = useContext(SiteContext)
@@ -17,12 +15,14 @@ const Template1 = () => {
    
    const contentData = data?.content ?? {};
 
-   const mode: Colormode = (data?.color as Colormode) || Colormode.light;
+   
+
+   const mode: ColorMode = (data?.color as ColorMode) || COLOR_MODES[0];
 
    console.log(mode)
 
    return (
-      <div className={`h-full w-full ${mode == Colormode.light ? "light" : "dark"}`}>
+      <div className={`h-full w-full ${mode == COLOR_MODES[0] ? "light" : "dark"}`}>
       <Routes>
          {/* This is where TabHandler or routed page renders */}
          {/* parent route has outlet where child route renders */}
