@@ -6,6 +6,11 @@
   --font-Nunito:"Nunito Sans",sans-serif;
   --font-Playfair:"Playfair Display",serif;
   --font-Quicksand:"Quicksand",sans-serif;
+
+  --color-background: #f8fafc; /* Off-white background, Notion-like */
+  --color-accent: #302e5f;     /* Grayscale accent with bluish tint */
+  --color-secondary: #74aeff;  /* Very light green for highlights */
+  --color-content: #0f172a;    /* Almost black, but softer */
 }
 
 @layer utilities {
@@ -16,4 +21,19 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.light{
+  --color-background:#f8fafc;
+  --color-secondary: #569cf1;  /* Dark teal-green */
+
+}
+
+.dark{
+  --color-accent: #9f9fd1;     /* Medium-light gray accent */
+  --color-secondary: #2a23a7;  /* Dark teal-green */
+  --color-content: #f1f5f9;    /* Off-white text */
+  --color-background: #080816;
 }

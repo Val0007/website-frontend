@@ -32,6 +32,7 @@ export interface SiteData{
     tabs:string[]
     skills?:string[]
     description?:string
+    color?:string
     content?: {
         [key: string]: Content;
       };
