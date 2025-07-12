@@ -3,6 +3,8 @@ import { useNavigate , useLocation } from "react-router-dom";
 import type { HeaderData } from "../utils/templateType1";
 import { FaGithub } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import { GrLinkedin } from "react-icons/gr";
+
 
 interface HeaderProps{
     tabs:string[]
@@ -103,7 +105,7 @@ const Header = ({tabs,data}:HeaderProps) => {
             {/* LInkedin */}
             {data.links?.linkedin ? <div className="text-sm underline cursor-pointer mr-2" onClick={()=>{
                window.open(`${data.links?.linkedin}`)
-            }}><img src="/linkedin_icon.svg" alt="Email" width="30" height="30" /></div> : null}
+            }}><GrLinkedin style={{ height: 28, width: 30 }} /></div> : null}
             
          </div>
 
