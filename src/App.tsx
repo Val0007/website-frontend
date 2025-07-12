@@ -43,7 +43,7 @@ useEffect( ()=>{
     console.log(subdomain)
   }
 
-  subdomain  = "valman"
+  // subdomain  = "valman"
   if(subdomain){
      getTemplateData(subdomain)
   }
