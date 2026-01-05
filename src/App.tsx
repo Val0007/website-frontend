@@ -25,11 +25,11 @@ function App() {
 async function getTemplateData(subdomain:string){
   try{
     console.log(import.meta.env.VITE_API_URL_PROD)
+
     const res = await fetch(`${import.meta.env.MODE == "development" ? import.meta.env.VITE_API_URL_DEV : import.meta.env.VITE_API_URL_PROD }/site/${subdomain}`)
     const data:SiteData = await res.json()
     setTemplateID(data.templateId)
     setSiteData(data)
-    console.log(data)
   }
   catch(e){
     //render error
@@ -40,10 +40,11 @@ async function getTemplateData(subdomain:string){
 useEffect( ()=>{
   if (parts.length >= 3) {
     subdomain = parts[0];
-    console.log(subdomain)
   }
-
-  // subdomain  = "valman"
+  if(import.meta.env.MODE == "development"){
+    subdomain = "sinval"
+    console.log("SSS")
+  }
   if(subdomain){
      getTemplateData(subdomain)
   }

@@ -14,10 +14,11 @@ interface TabHandlerProps {
     console.log('Current tabName:', tabName);
     console.log('Available tabs:', tabs);
     console.log('Available content keys:', content ? Object.keys(content) : 'No content');
-    
+    const cleanTabs = tabs.map(tab => tab.trim()); //['home '] trailing spaces will cause errors
+
    
     // Check if user has access to this tab
-    if (!tabs.includes(tabName || '')) {
+    if (!cleanTabs.includes(tabName || '')) {
       return (
         <div className="h-full flex items-center justify-center">
           <div className="text-center">
