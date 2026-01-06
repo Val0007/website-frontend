@@ -11,7 +11,6 @@ interface SectionRendererProps {
 const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
  const { data,structureId } = userData;
 
- const [open, setOpen] = useState(false);
 
   const structure1 = (tabData: TabData, index: number) => {
     return (
@@ -50,11 +49,13 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
 
   
   const structure2 = (tabData: TabData, index: number) => {
+
+    const [open, setOpen] = useState(false);
   
     return (
       <div 
         key={index} 
-        className="mb-4 bg-white/30 border border-content/12 rounded-xl overflow-hidden shadow-sm"
+        className={`mb-4 bg-white/30 border border-content/12 rounded-xl overflow-hidden shadow-sm ${open ? "max-h-full" : "max-h-15"} `}
       >
         <button
           onClick={() => setOpen(!open)}

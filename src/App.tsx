@@ -42,7 +42,7 @@ useEffect( ()=>{
     subdomain = parts[0];
   }
   if(import.meta.env.MODE == "development"){
-    subdomain = "sinval"
+    subdomain = "sing"
     console.log("SSS")
   }
   if(subdomain){
