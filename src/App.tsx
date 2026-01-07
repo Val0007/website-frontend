@@ -24,7 +24,6 @@ function App() {
 
 async function getTemplateData(subdomain:string){
   try{
-    console.log(import.meta.env.VITE_API_URL_PROD)
 
     const res = await fetch(`${import.meta.env.MODE == "development" ? import.meta.env.VITE_API_URL_DEV : import.meta.env.VITE_API_URL_PROD }/site/${subdomain}`)
     const data:SiteData = await res.json()
