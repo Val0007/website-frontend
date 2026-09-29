@@ -12,8 +12,8 @@ interface HeaderProps{
 }
 
 interface Page{
-   name:String
-   link:String
+   name:string
+   link:string
 }
 
 const Header = ({tabs,data}:HeaderProps) => {
