@@ -20,7 +20,7 @@ const Template1 = () => {
    const mode: ColorMode = (data?.color as ColorMode) || COLOR_MODES[0];
 
    console.log(mode)
-
+   if (!data) return null;
    return (
       <div className={`h-full w-full ${mode == COLOR_MODES[0] ? "light" : "dark"}`}>
       <Routes>

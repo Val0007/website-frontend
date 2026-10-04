@@ -14,8 +14,8 @@ function App() {
   const [siteData,setSiteData] = useState<SiteData>()
 
 
-  let host = window.location.host;
-  let parts = host.split(".");
+  const host = window.location.host;
+  const parts = host.split(".");
   let subdomain = "";
 
 // If we get more than 3 parts, then we have a subdomain
@@ -30,7 +30,7 @@ async function getTemplateData(subdomain:string){
     setTemplateID(data.templateId)
     setSiteData(data)
   }
-  catch(e){
+  catch{
     //render error
   }
 }

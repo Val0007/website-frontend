@@ -48,13 +48,12 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
   
 
   
-  const structure2 = (tabData: TabData, index: number) => {
+    const Structure2 = ({ tabData }: { tabData: TabData }) => {
 
     const [open, setOpen] = useState(false);
   
     return (
       <div 
-        key={index} 
         className={`mb-4 bg-white/30 border border-content/12 rounded-xl overflow-hidden shadow-sm ${open ? "max-h-full" : "max-h-15"} `}
       >
         <button
@@ -152,7 +151,7 @@ const SectionRenderer: React.FC<SectionRendererProps> = ({ userData }) => {
         case 1 :
             return data.map((item, index) => structure1(item, index))
         case 2:
-            return data.map((item, index) => structure2(item, index))
+            return data.map((item, index) => <Structure2 key={index} tabData={item} />)
         case 3:
             return data.map((item, index) => structure3(item, index))
         default:
