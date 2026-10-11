@@ -9,5 +9,4 @@ createRoot(document.getElementById('root')!).render(
 </BrowserRouter>
 )
 
-// Deliberate lint errors to demonstrate that CI blocks a bad change
-const unusedDemo: any = 1
+
