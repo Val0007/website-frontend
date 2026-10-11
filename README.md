@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+# ZipFolio public site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The page visitors see. It shows one user's portfolio at
+`<name>.zipfolio.xyz`. The site name is the first part of the address; the
+content comes from the backend.
 
-Currently, two official plugins are available:
+## What it uses
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 and TypeScript
+- Vite
+- Tailwind CSS 4
+- React Router
+- GitHub Actions, Vercel
 
-## Expanding the ESLint configuration
+## How it works
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. It takes the first part of the address (`john` in `john.zipfolio.xyz`).
+2. It asks the backend for that site (`GET /site/john`) and for the feature
+   flags (`GET /flags`).
+3. It draws the site: name, links, skills and one page per tab.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+There are two designs. Template 1 shows the tabs across the top. Template 2
+shows them in a side menu and is only used when the `template2` feature flag
+is on and the user picked it. Otherwise the site uses Template 1.
+
+## Run it locally
+
+You need Node 20 and the backend running (see the backend README).
+
+```bash
+npm install
+echo "VITE_API_URL_DEV=http://localhost:3000" > .env
+npm run dev            # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+In development the site name is fixed to `sing` (set in `src/App.tsx`), so the
+database needs a user whose site name is `sing`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Settings:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+| Variable | Used when |
+|---|---|
+| `VITE_API_URL_DEV` | Running `npm run dev` |
+| `VITE_API_URL_PROD` | Building for production; set in the Vercel project |
+
+## Checks
+
+```bash
+npm run lint      # ESLint
+npm run build     # type check (tsc) and production build
 ```
+
+There are no automated tests in this repo, only lint and the build. The backend
+has the tests.
+
+## How it is checked and deployed
+
+- **Every pull request:** GitHub Actions runs lint and the build. CodeQL scans
+  the code.
+- **Merge to `main`:** after those checks pass, GitHub Actions builds the site
+  and deploys it to Vercel with the Vercel CLI. Vercel's own automatic deploys are
+  turned off in `vercel.json`, so nothing reaches production without passing the checks.
+- **`vercel.json`** also sends every path to `index.html`, which the single-page
+  app needs.
+- **`main` is protected:** changes go through a pull request, and the CI check
+  must pass.
+- **Dependabot** opens weekly pull requests for npm packages.
+
+The deploy step needs three GitHub secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID` and
+`VERCEL_PROJECT_ID`.
+
+Live: `https://<name>.zipfolio.xyz`
